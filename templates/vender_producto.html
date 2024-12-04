@@ -1,0 +1,50 @@
+{% include '/scripts.html'  %}
+{% include '/header.html'  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heladería</title>
+</head>
+<main class="main text-center py-4"> 
+<body>
+    <br><br>
+    <h1>Menú de Heladería</h1>
+
+    <!-- Mostrar mensaje -->
+    {% if mensaje %}
+        <p class="{% if '¡Oh no!' in mensaje %}error{% else %}success{% endif %}">
+            {{ mensaje }}
+        </p>
+    {% endif %}
+
+    <!-- Lista de productos -->
+    <div class="container mt-5 table table-dark" >
+        <div class="row mt-8">
+    <ul>
+        {% for producto in productos %}
+        <div class="col-md-12">
+            <div class="card-body">
+            <li>
+                {{ producto.nombre }} - ${{ producto.precio_publico }}
+                <form action="/registrar_ventas/{{ producto.id }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn-success">Registrar Venta</button>
+                </form>
+            </li>
+        {% endfor %}
+        </div>
+    </div>
+    </ul>
+
+    <!-- Ventas registradas -->
+    <h2>Ventas registradas</h2>
+    <ul>
+        {% for venta in ventas %}
+            <li>| Producto: {{ venta.producto.nombre }} | Fecha de Venta: {{ venta.fecha }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+</body>
+</main>
+</html>

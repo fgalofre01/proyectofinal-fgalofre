@@ -1,0 +1,72 @@
+{% include '/scripts.html'  %}
+{% include '/header.html'  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Registrar venta
+      </title> 
+</head>
+<main class="main text-center py-4"> 
+<body>
+    <br><br>
+{% with messages=get_flashed_messages()%}
+
+{% if messages%}
+<div class="alert alert-success" role="alert">
+{% for message in messages %}
+   {{ message }}
+{% endfor %}
+</div>
+{% endif %}
+
+{% endwith %}
+    <h1 class="text-center text-warning">Registrar Venta</h1>
+    <div class="container">
+        <form action="/registrar_venta" method="POST">
+            <label for="producto"><strong>Seleccione un producto:</strong></label>
+            <select id="producto" name="producto_id" required>
+                {% for producto in productos %}
+                <option value="{{ producto.id }}">{{ producto.nombre }} </option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="cantidad"><strong>Cantidad:</strong></label>
+            <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+            <br><br>
+            <button type="submit" class="btn btn-success">Registrar Venta</button>
+        </form>
+    </div>
+
+    <div class="container mt-5 table table-dark" >      
+        <div class="row mt-4">
+            {% for producto in productos %}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        {% if producto %}
+                        <p class="card-text">{{ producto.tipo_vaso }}</p>
+                        {% else %}
+                        <p class="card-text"> - </p>
+                        {% endif %}  
+                        <p class="card-text"><strong>Precio: ${{ producto.precio_publico }}</strong></p>
+                        <p class="card-text" style="color: dodgerblue;"><strong>Total ventas: {{ producto.ventas_totales }}</strong></p>
+                        <h6 class="card-title">Ingredientes</h6>
+                        <ul>
+                            <li> {{ producto.ingrediente1.nombre if producto.ingrediente1 }}</li>
+                            <li> {{ producto.ingrediente2.nombre if producto.ingrediente2 }}</li>
+                            <li> {{ producto.ingrediente3.nombre if producto.ingrediente3 }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</main>
+</html>

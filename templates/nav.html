@@ -1,0 +1,41 @@
+
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+           
+            <a class="nav-link" href="{{ url_for('index') }}" aria-current="page"><i class="nav-icon fas fa-home text-dark" aria-hidden="true"></i> Productos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('mostrar_ingredientes') }}"><i class="nav-icon fas fa-search text-dark"></i> Ingredientes</a>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('ingredientes_categoria') }}"><i class="nav-icon fas fa-folder-open  text-dark"></i> Clasificacion de los ingredientes </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('mostrar_costo_ajustado') }}"><i class="nav-icon fas fa-calculator text-dark"></i> Costo total</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('calcular_calorias') }}"><i class="nav-icon fas fa-archive text-dark"></i> Calorias</a>
+        </li> 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('calcular_rentabilidad') }}"><i class="nav-icon fas fa-calculator text-dark"></i> Rentabilidad</a>
+        </li> 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('mas_rentable') }}"><i class="nav-icon fas fa-cube text-dark text-dark"></i> Producto mas rentable</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('registrar_venta') }}"><i class="nav-icon fas fa-archive text-dark"></i> Registrar venta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('producto_mas_vendido') }}"><i class="nav-icon fas fa-cube text-dark"></i> Producto mas vendido</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('abastecer_inventario') }}"><i class="nav-icon fas fa-folder-open text-dark"></i> Abastecer inventario</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('renovar_inventario') }}"><i class="nav-icon fas fa-paperclip text-dark"></i> Renovar inventario</a>
+        </li>
+    </ul>
+</nav>
