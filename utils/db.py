@@ -1,8 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy, g, current_app
+from flask_sqlalchemy import SQLAlchemy
 import mysql.connector
+import os
 
 db = SQLAlchemy()
-g.db = mysql.connector.connect(port=current_app.config["DATABASE_PORT"],)
 
 def init_db(app):
 
