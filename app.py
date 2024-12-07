@@ -15,9 +15,15 @@ pymysql.install_as_MySQLdb()
 secret_key = os.urandom(24)
 app.config['SECRET_KEY'] = secret_key
 
+db_user = os.getenv("MYSQLUSER")
+db_password = os.getenv("MYSQLPASSWORD")
+db_host = os.getenv("MYSQLHOST")
+db_port = os.getenv("MYSQLPORT")
+db_name = os.getenv("MYSQLDATABASE")
+
 app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config.from_mapping(DATABASE_PORT= os.environ.get('FLASK_DATABASE_PORT'))
+
 
 db.init_app(app)#SQLAlchemy(app)
 init_db(app)
